@@ -4,9 +4,9 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.core.theme.custom.*
-import com.ui.theme.custom.DarkThemeColors
-import com.ui.theme.custom.LightThemeColors
-import com.ui.theme.custom.FuzeColors
+import com.ui.base.theme.custom.DarkThemeColors
+import com.ui.base.theme.custom.LightThemeColors
+import com.ui.base.theme.custom.FuzeColors
 
 private val LocalColors = staticCompositionLocalOf<FuzeColors> { error("No Colors provided") }
 private val LocalDimens = staticCompositionLocalOf<Dimensions> { error("No Dimens provided") }
