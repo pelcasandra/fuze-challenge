@@ -1,6 +1,4 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
-
-
 object Dependencies {
     private const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
 
@@ -20,7 +18,7 @@ object Dependencies {
     const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:${Versions.swipeRefresh}"
 
     private const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
-    private const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
 
     private const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     private const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
@@ -56,7 +54,6 @@ object Dependencies {
         add(viewModel)
         add(coil)
         add(hilt)
-        add(hiltCompiler)
     }
 
     val dataLibraries = mutableListOf<String>().apply {
