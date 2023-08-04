@@ -9,6 +9,7 @@ object Versions {
     const val googleMaterial = "1.9.0"
     const val coreKtx = "1.10.1"
     const val compose = "1.4.3"
+    const val composeCompiler = "1.4.6"
     const val composeConstraint = "1.0.1"
     const val lifecycle = "2.6.1"
     const val hilt = "2.44"
