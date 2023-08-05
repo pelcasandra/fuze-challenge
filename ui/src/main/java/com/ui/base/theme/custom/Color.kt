@@ -1,4 +1,4 @@
-package com.ui.theme.custom
+package com.ui.base.theme.custom
 
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateOf

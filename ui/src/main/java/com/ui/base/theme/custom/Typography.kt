@@ -1,11 +1,11 @@
-package com.ui.theme.custom
+package com.ui.base.theme.custom
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.ui.theme.custom.Typography.Font.Montserrat
+import com.ui.base.theme.custom.Typography.Font.Montserrat
 import com.fuze.R
 
 sealed class Typography {
