@@ -45,6 +45,7 @@ android {
 dependencies {
     //data libs
     implementation(Dependencies.dataLibraries)
+    kapt(Dependencies.hiltCompiler)
 
     //test libs
     testImplementation(Dependencies.testLibraries)
