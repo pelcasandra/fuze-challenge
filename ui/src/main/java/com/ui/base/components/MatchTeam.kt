@@ -14,13 +14,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.domain.models.Opponent
 import com.fuze.R
 import com.ui.base.theme.Dimens
 import com.ui.base.theme.FuzeTheme
 import com.ui.base.theme.custom.Typography
 
 @Composable
-fun MatchTeam(modifier: Modifier = Modifier) {
+fun MatchTeam(
+    modifier: Modifier = Modifier,
+    entity: MatchTeamEntity
+) {
     Row(
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -33,7 +37,7 @@ fun MatchTeam(modifier: Modifier = Modifier) {
             Image(painter = painterResource(id = R.drawable.team_preview), contentDescription = "")
             Text(
                 modifier = Modifier.padding(top = Dimens.small_padding),
-                text = "Time 1",
+                text = entity.firstTeam.name,
                 style = Typography.Label.xsmall.copy(fontSize = 10.sp),
                 color = Color.White
             )
@@ -52,7 +56,7 @@ fun MatchTeam(modifier: Modifier = Modifier) {
             Image(painter = painterResource(id = R.drawable.team_preview), contentDescription = "")
             Text(
                 modifier = Modifier.padding(top = Dimens.small_padding),
-                text = "Time 2",
+                text = entity.secondTeam.name,
                 style = Typography.Label.xsmall.copy(fontSize = 10.sp),
                 color = Color.White
             )
@@ -60,10 +64,15 @@ fun MatchTeam(modifier: Modifier = Modifier) {
     }
 }
 
+data class MatchTeamEntity(
+    val firstTeam: Opponent,
+    val secondTeam: Opponent
+)
+
 @Preview
 @Composable
 private fun PrevMatchTeam() {
     FuzeTheme {
-        MatchTeam()
+//        MatchTeam()
     }
 }
