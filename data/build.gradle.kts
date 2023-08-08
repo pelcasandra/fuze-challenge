@@ -49,8 +49,11 @@ android {
 }
 
 dependencies {
+    implementation(project(Modules.domain))
+
     //data libs
     implementation(Dependencies.dataLibraries)
+    kapt(Dependencies.hiltCompiler)
 
     //test libs
     testImplementation(Dependencies.testLibraries)
