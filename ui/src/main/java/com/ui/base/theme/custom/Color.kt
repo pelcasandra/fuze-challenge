@@ -21,7 +21,7 @@ val LightThemeColors = FuzeColors(
     primary = blue161621,
     tertiary = whiteFFFFFF,
     background = blue161621,
-    backgroundMachCard = blue272639,
+    backgroundMatchCard = blue272639,
     text = black282828,
     unSelectText = gray888888,
     border = grayE5E5E9,
@@ -32,7 +32,7 @@ val DarkThemeColors = FuzeColors(
     primary = blue161621,
     tertiary = black0D0D0D,
     background = black282828,
-    backgroundMachCard = blue272639,
+    backgroundMatchCard = blue272639,
     text = whiteFFFFFF,
     unSelectText = gray888888,
     border = grayE5E5E9,
@@ -44,7 +44,7 @@ class FuzeColors(
     primary: Color,
     tertiary: Color,
     background: Color,
-    backgroundMachCard: Color,
+    backgroundMatchCard: Color,
     text: Color,
     unSelectText: Color,
     border: Color,
@@ -56,7 +56,7 @@ class FuzeColors(
         private set
     var background = mutableStateOf(background).value
         private set
-    var backgroundInput = mutableStateOf(backgroundMachCard).value
+    var backgroundMatchCard = mutableStateOf(backgroundMatchCard).value
         private set
     var text = mutableStateOf(text).value
         private set
@@ -71,7 +71,7 @@ class FuzeColors(
         primary = primary,
         tertiary = tertiary,
         background = background,
-        backgroundMachCard = backgroundInput,
+        backgroundMatchCard = backgroundMatchCard,
         text = text,
         unSelectText = unSelectText,
         border = border,
@@ -82,7 +82,7 @@ class FuzeColors(
         primary = other.primary
         tertiary = other.tertiary
         background = other.background
-        backgroundInput = other.backgroundInput
+        backgroundMatchCard = other.backgroundMatchCard
         text = other.text
         unSelectText = other.unSelectText
         border = other.border

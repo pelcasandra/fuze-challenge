@@ -1,4 +1,4 @@
-package com.core.theme.custom
+package com.ui.base.theme.custom
 
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.unit.Dp
