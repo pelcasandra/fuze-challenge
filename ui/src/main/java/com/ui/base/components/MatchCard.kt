@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.domain.models.Match
 import com.fuze.R
 import com.ui.base.theme.Colors
 import com.ui.base.theme.Dimens
@@ -27,7 +28,7 @@ import com.ui.base.theme.custom.Typography
 import com.ui.base.theme.custom.redF42A35
 
 @Composable
-fun MatchCard(modifier: Modifier = Modifier) {
+fun MatchCard(modifier: Modifier = Modifier, match: Match) {
     Card(
         modifier = modifier.fillMaxWidth(),
         backgroundColor = Colors.backgroundMatchCard,
@@ -53,7 +54,13 @@ fun MatchCard(modifier: Modifier = Modifier) {
                 color = Color.White
             )
 
-            MatchTeam(modifier = Modifier.padding(top = Dimens.small_padding))
+            MatchTeam(
+                modifier = Modifier.padding(top = Dimens.small_padding),
+                entity = MatchTeamEntity(
+                    firstTeam = match.opponents!![0],
+                    secondTeam = match.opponents!![1]
+                )
+            )
 
             Divider(
                 modifier = Modifier.padding(top = Dimens.small_padding),
@@ -85,6 +92,6 @@ fun MatchCard(modifier: Modifier = Modifier) {
 @Composable
 private fun PrevMatchCard() {
     FuzeTheme {
-        MatchCard()
+//        MatchCard()
     }
 }

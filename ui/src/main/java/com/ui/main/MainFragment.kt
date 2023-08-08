@@ -57,9 +57,9 @@ class MainFragment : BaseFragment<MainViewModel>() {
                     else LazyColumn {
                         itemsIndexed(state.value.matches) { index, item ->
                             MatchCard(
-                                modifier =
-                                if (index != 0) Modifier.padding(top = Dimens.xlarge_padding)
-                                else Modifier.padding(top = Dimens.small_padding)
+                                modifier = if (index != 0) Modifier.padding(top = Dimens.xlarge_padding)
+                                else Modifier.padding(top = Dimens.small_padding),
+                                match = item
                             )
                         }
                     }
