@@ -11,7 +11,7 @@ data class MatchResponse(
     @SerializedName("games") val games: List<GameResponse>,
     @SerializedName("league") val league: LeagueResponse,
     @SerializedName("serie") val serie: SerieResponse,
-    @SerializedName("opponents") val opponents: List<OpponentResponse>? = emptyList(),
+    @SerializedName("opponents") val opponents: List<OpponentsResponse>? = emptyList(),
 ) : Parcelable {
 
     fun map() = Match(
@@ -19,6 +19,6 @@ data class MatchResponse(
         games = games.map { it.map() },
         league = league.map(),
         serie = serie.map(),
-        opponents = opponents?.map { it.map() }
+        opponents = opponents?.map { it.opponentResponse.map() }
     )
 }
