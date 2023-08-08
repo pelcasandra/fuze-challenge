@@ -48,7 +48,7 @@ class SplashFragment : BaseFragment<SplashViewModel>() {
                     AnimatedVisibility(
                         modifier = Modifier.align(Alignment.Center),
                         visible = isAnimation.value,
-                        enter = fadeIn(spring(stiffness = Spring.StiffnessMedium)),
+                        enter = fadeIn(spring(stiffness = Spring.StiffnessLow)),
                         exit = fadeOut()
                     ) {
                         Image(
