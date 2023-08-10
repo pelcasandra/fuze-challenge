@@ -1,4 +1,4 @@
-package com.domain.models
+package com.domain.match.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -6,6 +6,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Serie(
-    val id: String,
+    val id: Int,
     val name: String
 ) : Parcelable

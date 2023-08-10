@@ -1,7 +1,7 @@
-package com.data
+package com.data.match
 
-import com.domain.MatchRepository
-import com.domain.models.Match
+import com.domain.match.MatchRepository
+import com.domain.match.models.Match
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
