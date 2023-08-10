@@ -21,10 +21,15 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.fuze.R
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.ui.base.BaseFragment
 import com.ui.base.components.MatchCard
+import com.ui.base.extension.safeNavigate
 import com.ui.base.theme.custom.Typography
+import com.ui.details.DetailsFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,15 +57,33 @@ class MainFragment : BaseFragment<MainViewModel>() {
                     )
 
                     if (state.value.loading) Box(modifier = Modifier.fillMaxSize()) {
-                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                        CircularProgressIndicator(
+                            modifier = Modifier.align(Alignment.Center),
+                            Color.White
+                        )
                     }
-                    else LazyColumn {
-                        itemsIndexed(state.value.matches) { index, item ->
-                            MatchCard(
-                                modifier = if (index != 0) Modifier.padding(top = Dimens.xlarge_padding)
-                                else Modifier.padding(top = Dimens.small_padding),
-                                match = item
-                            )
+                    else SwipeRefresh(
+                        state = rememberSwipeRefreshState(isRefreshing = state.value.isRefreshing),
+                        onRefresh = { viewModel.refresh() }
+                    ) {
+                        LazyColumn {
+                            itemsIndexed(state.value.matches) { index, item ->
+                                MatchCard(
+                                    modifier = if (index != 0) Modifier.padding(top = Dimens.xlarge_padding)
+                                    else Modifier.padding(top = Dimens.small_padding),
+                                    match = item
+                                ) {
+                                    findNavController().safeNavigate(
+                                        R.id.detailsFragment,
+                                        DetailsFragmentArgs(
+                                            "${item.league.name} ${item.serie.name}",
+                                            it,
+                                            item.opponents!![0],
+                                            item.opponents!![1]
+                                        ).toBundle()
+                                    )
+                                }
+                            }
                         }
                     }
                 }
