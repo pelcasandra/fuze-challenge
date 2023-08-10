@@ -17,7 +17,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val coroutines = "1.7.3"
     const val gson = "2.10.1"
-    const val coil = "2.4.0"
+    const val glide = "2.0.0"
     const val swipeRefresh = "0.23.0"
 
 

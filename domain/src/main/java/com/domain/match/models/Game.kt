@@ -1,4 +1,4 @@
-package com.domain.models
+package com.domain.match.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -6,7 +6,13 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Game(
-    val id: Long,
-    val matchId: Long,
-    val beginAt: String
+    val id: Int,
+    val matchId: Int,
+    val status: Status
 ) : Parcelable
+
+enum class Status {
+    NotStarted,
+    Running,
+    Finished
+}

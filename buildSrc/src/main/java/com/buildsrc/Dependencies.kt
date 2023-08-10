@@ -7,6 +7,7 @@ object Dependencies {
     private const val materialGoogle = "com.google.android.material:material:${Versions.googleMaterial}"
     private const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     private const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
+    private const val composeMaterial3 = "androidx.compose.material3:material3:1.0.1"
     private const val composeUi = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
     private const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     private const val composeLifeCycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.lifecycle}"
@@ -14,8 +15,8 @@ object Dependencies {
     private const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     private const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     private const val gson = "com.google.code.gson:gson:${Versions.gson}"
-    private const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
-    const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:${Versions.swipeRefresh}"
+    private const val glide = "com.github.skydoves:landscapist-glide:${Versions.glide}"
+    private const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:${Versions.swipeRefresh}"
 
     private const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
@@ -44,6 +45,7 @@ object Dependencies {
         add(materialGoogle)
         add(coreKtx)
         add(composeMaterial)
+        add(composeMaterial3)
         add(composeUi)
         add(composeUiTooling)
         add(composeLifeCycleRuntime)
@@ -52,8 +54,9 @@ object Dependencies {
         add(navigationUi)
         add(coroutines)
         add(viewModel)
-        add(coil)
+        add(glide)
         add(hilt)
+        add(swipeRefresh)
     }
 
     val dataLibraries = mutableListOf<String>().apply {

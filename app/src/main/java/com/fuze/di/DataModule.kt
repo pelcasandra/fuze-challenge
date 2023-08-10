@@ -1,9 +1,11 @@
 package com.fuze.di
 
-import android.os.VibrationAttributes.Builder
-import com.data.MatchRepositoryImpl
-import com.data.MatchService
-import com.domain.MatchRepository
+import com.data.match.MatchRepositoryImpl
+import com.data.match.MatchService
+import com.data.team.TeamRepositoryImpl
+import com.data.team.TeamService
+import com.domain.match.MatchRepository
+import com.domain.team.TeamRepository
 import com.fuze.BuildConfig
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -38,11 +40,21 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideService(retrofit: Retrofit): MatchService {
+    fun provideMatchService(retrofit: Retrofit): MatchService {
         return retrofit.create(MatchService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideRemoteRepository(service: MatchService): MatchRepository = MatchRepositoryImpl(service)
+    fun provideMatchRepository(service: MatchService): MatchRepository = MatchRepositoryImpl(service)
+
+    @Provides
+    @Singleton
+    fun provideTeamService(retrofit: Retrofit): TeamService {
+        return retrofit.create(TeamService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTeamRepository(service: TeamService): TeamRepository = TeamRepositoryImpl(service)
 }
