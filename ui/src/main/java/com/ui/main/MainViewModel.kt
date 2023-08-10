@@ -2,8 +2,8 @@ package com.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.domain.GetMatches
-import com.domain.models.Match
+import com.domain.match.GetMatches
+import com.domain.match.models.Match
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,10 +15,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(private val getMatches: GetMatches) : ViewModel() {
-    private val _viewState = MutableStateFlow(ViewState(loading = true))
-    val viewState: StateFlow<ViewState> = _viewState
+    private val _viewState = MutableStateFlow(MainViewState(loading = true))
+    val viewState: StateFlow<MainViewState> = _viewState
 
     init {
+        load()
+    }
+
+    private fun load() {
         viewModelScope.launch {
             getMatches.execute()
                 .flowOn(Dispatchers.Main)
@@ -26,13 +30,19 @@ class MainViewModel @Inject constructor(private val getMatches: GetMatches) : Vi
                     it.message
                 }
                 .collect {
-                    _viewState.value = ViewState(it, false)
+                    _viewState.value = MainViewState(it, false)
                 }
         }
     }
+
+    fun refresh() {
+        _viewState.value = _viewState.value.copy(isRefreshing = true)
+        load()
+    }
 }
 
-data class ViewState(
+data class MainViewState(
     val matches: List<Match> = emptyList(),
-    val loading: Boolean
+    val loading: Boolean,
+    val isRefreshing: Boolean = false
 )

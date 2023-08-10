@@ -13,4 +13,25 @@
         android:id="@+id/mainFragment"
         android:name="com.ui.main.MainFragment" />
 
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.ui.details.DetailsFragment">
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="matchTime"
+            app:argType="string" />
+
+        <argument
+            android:name="firstTeam"
+            app:argType="com.domain.match.models.Opponent" />
+
+        <argument
+            android:name="secondTeam"
+            app:argType="com.domain.match.models.Opponent" />
+    </fragment>
+
 </navigation>
