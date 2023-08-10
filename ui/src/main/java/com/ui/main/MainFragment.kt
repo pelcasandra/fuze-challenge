@@ -14,7 +14,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -46,8 +49,8 @@ class MainFragment : BaseFragment<MainViewModel>() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ) = ComposeView(requireContext()).apply {
         setContent {
-            val state = viewModel.viewState.collectAsState()
-            val matches = state.value.matches.collectAsLazyPagingItems()
+            val matches = viewModel.state.collectAsState().value.matches.collectAsLazyPagingItems()
+            val isFirsLoading = rememberSaveable { mutableStateOf(true) }
 
             FuzeTheme {
                 Column(
@@ -63,27 +66,7 @@ class MainFragment : BaseFragment<MainViewModel>() {
                         color = Color.White
                     )
 
-                    when {
-                        !state.value.isRefreshing
-                        && matches.loadState.refresh == LoadState.Loading -> Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .weight(1f)
-                        ) {
-                            CircularProgressIndicator(
-                                modifier = Modifier.align(Alignment.Center),
-                                color = Color.White
-                            )
-                        }
-
-                        else -> {}
-                    }
-
-                    Matches(
-                        matches = matches,
-                        viewModel = viewModel,
-                        isRefreshing = state.value.isRefreshing
-                    ) { item, matchTime ->
+                    Matches(matches = matches, isFirsLoading = isFirsLoading) { item, matchTime ->
                         findNavController().safeNavigate(
                             R.id.detailsFragment,
                             DetailsFragmentArgs(
@@ -102,18 +85,22 @@ class MainFragment : BaseFragment<MainViewModel>() {
 
 @Composable
 private fun Matches(
-    viewModel: MainViewModel,
     matches: LazyPagingItems<Match>,
-    isRefreshing: Boolean,
+    isFirsLoading: MutableState<Boolean>,
     onClick: (Match, String) -> Unit
 ) {
+    val state =
+        rememberSwipeRefreshState(isRefreshing = matches.loadState.refresh is LoadState.Loading)
+
     SwipeRefresh(
-        state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
-        onRefresh = { viewModel.refresh() }
+        state = state,
+        onRefresh = { matches.refresh() }
     ) {
         LazyColumn {
             itemsIndexed(matches) { index, item ->
                 item?.let {
+                    isFirsLoading.value = false
+
                     MatchCard(
                         modifier = if (index != 0) Modifier.padding(top = Dimens.xlarge_padding)
                         else Modifier.padding(top = Dimens.small_padding),
@@ -124,9 +111,9 @@ private fun Matches(
                 }
             }
 
-            item {
-                when (matches.loadState.append) {
-                    is LoadState.Loading -> Box(
+            if (matches.loadState.append is LoadState.Loading) {
+                item {
+                    Box(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = Dimens.medium_padding)
@@ -136,9 +123,11 @@ private fun Matches(
                             color = Color.White
                         )
                     }
-
-                    else -> {}
                 }
+            }
+
+            if (matches.loadState.refresh is LoadState.Loading && isFirsLoading.value) {
+                item { Box(modifier = Modifier.fillParentMaxSize()) {} }
             }
         }
     }

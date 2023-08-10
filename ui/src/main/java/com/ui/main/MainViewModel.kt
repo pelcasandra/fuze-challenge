@@ -12,20 +12,22 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
+import org.jetbrains.annotations.TestOnly
 import java.util.Calendar
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(private val getMatches: GetMatches) : ViewModel() {
-    private val _viewState = MutableStateFlow(MainViewState())
-    val viewState: StateFlow<MainViewState> = _viewState
+    private val _state = MutableStateFlow(MainViewState())
+    val state: StateFlow<MainViewState> = _state
 
     init {
         load()
     }
 
-    private fun load() {
-        _viewState.value = MainViewState(
+    @TestOnly
+    fun load() {
+        _state.value = MainViewState(
             matches = getMatches.execute(
                 listOf(
                     Calendar.getInstance().time.formatToString(),
@@ -34,14 +36,6 @@ class MainViewModel @Inject constructor(private val getMatches: GetMatches) : Vi
             ).cachedIn(viewModelScope)
         )
     }
-
-    fun refresh() {
-        _viewState.value = _viewState.value.copy(isRefreshing = true)
-        load()
-    }
 }
 
-data class MainViewState(
-    val matches: Flow<PagingData<Match>> = flow { },
-    val isRefreshing: Boolean = false
-)
+data class MainViewState(val matches: Flow<PagingData<Match>> = flow { })

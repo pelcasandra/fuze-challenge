@@ -7,6 +7,5 @@ import java.util.Date
 @Parcelize
 data class Serie(
     val id: Int,
-    val name: String,
-    val modifiedAt: Date?
+    val name: String
 ) : Parcelable
