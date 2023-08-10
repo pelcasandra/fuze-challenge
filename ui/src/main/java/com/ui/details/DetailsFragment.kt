@@ -67,7 +67,8 @@ class DetailsFragment : BaseFragment<DetailsViewModel>() {
                             Text(
                                 args.title,
                                 color = Color.White,
-                                style = Typography.Label.small.copy(fontSize = 18.sp)
+                                style = Typography.Label.small.copy(fontSize = 18.sp),
+                                textAlign = TextAlign.Center
                             )
                         },
                         navigationIcon = {

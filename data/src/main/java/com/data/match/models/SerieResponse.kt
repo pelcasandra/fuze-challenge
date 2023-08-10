@@ -9,13 +9,11 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class SerieResponse(
     @SerializedName("id") val id: Int? = 0,
-    @SerializedName("name") val name: String? = "",
-    @SerializedName("modified_at") val modifiedAt: String? = ""
+    @SerializedName("name") val name: String? = ""
 ) : Parcelable {
 
     fun map() = Serie(
         id = id ?: 0,
-        name = name ?: "",
-        modifiedAt = toDate(modifiedAt ?: "", "yyyy-MM-dd'T'HH:mm:ss")
+        name = name ?: ""
     )
 }
