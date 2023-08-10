@@ -17,6 +17,8 @@ object Dependencies {
     private const val gson = "com.google.code.gson:gson:${Versions.gson}"
     private const val glide = "com.github.skydoves:landscapist-glide:${Versions.glide}"
     private const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:${Versions.swipeRefresh}"
+    private const val paging = "androidx.paging:paging-compose:${Versions.paging}"
+    private const val pagingRuntime = "androidx.paging:paging-runtime:${Versions.pagingRuntime}"
 
     private const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
@@ -57,6 +59,8 @@ object Dependencies {
         add(glide)
         add(hilt)
         add(swipeRefresh)
+        add(paging)
+        add(pagingRuntime)
     }
 
     val dataLibraries = mutableListOf<String>().apply {
@@ -66,6 +70,7 @@ object Dependencies {
         add(gson)
         add(gsonConverter)
         add(hilt)
+        add(paging)
     }
 
     val androidTestLibraries = mutableListOf<String>().apply {

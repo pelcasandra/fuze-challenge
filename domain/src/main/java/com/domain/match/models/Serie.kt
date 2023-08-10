@@ -1,11 +1,12 @@
 package com.domain.match.models
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import java.util.Date
 
 @Parcelize
 data class Serie(
     val id: Int,
-    val name: String
+    val name: String,
+    val modifiedAt: Date?
 ) : Parcelable

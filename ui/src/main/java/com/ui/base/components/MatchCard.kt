@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
@@ -16,8 +15,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -40,7 +37,7 @@ import com.ui.base.theme.custom.redF42A35
 
 @Composable
 fun MatchCard(modifier: Modifier = Modifier, match: Match, onClick: (String) -> Unit) {
-    val matchTime = when (match.games.first { it.matchId == match.id }.status) {
+    val matchTime = when (match.status) {
         Status.Running -> stringResource(id = R.string.match_card_time_now)
         else -> match.beginAt?.getDayOfWeek() ?: ""
     }
@@ -57,7 +54,7 @@ fun MatchCard(modifier: Modifier = Modifier, match: Match, onClick: (String) -> 
                 modifier = Modifier
                     .align(Alignment.End)
                     .background(
-                        when (match.games.first { it.matchId == match.id }.status) {
+                        when (match.status) {
                             Status.Running -> redF42A35
                             else -> Color.White.copy(alpha = 0.2f)
                         },

@@ -11,5 +11,13 @@ data class Match(
     val games: List<Game>,
     val league: League,
     val serie: Serie,
+    val status: Status,
     val opponents: List<Opponent>? = emptyList(),
 ) : Parcelable
+
+
+enum class Status {
+    NotStarted,
+    Running,
+    Finished
+}

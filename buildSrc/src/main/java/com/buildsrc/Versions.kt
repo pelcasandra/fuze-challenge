@@ -19,7 +19,8 @@ object Versions {
     const val gson = "2.10.1"
     const val glide = "2.0.0"
     const val swipeRefresh = "0.23.0"
-
+    const val paging = "1.0.0-alpha15"
+    const val pagingRuntime = "3.1.1"
 
     //test
     const val junit = "4.13.2"
