@@ -16,3 +16,7 @@ fun toDate(value: String, pattern: String): Date? {
 fun Date.getDayOfWeek(): String {
     return SimpleDateFormat("dd/MM HH:mm", Locale.getDefault()).format(this)
 }
+
+fun Date.formatToString(): String {
+    return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).format(this)
+}

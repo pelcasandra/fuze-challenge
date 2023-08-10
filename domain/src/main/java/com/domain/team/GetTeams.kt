@@ -6,9 +6,7 @@ import javax.inject.Inject
 
 class GetTeams @Inject constructor(private val repository: TeamRepository) {
     fun execute(listId: List<Int>) = repository.getTeams(listId.joinToString()).map { teams ->
-        teams
-            .map { team -> team.copy(players = team.players.sortedByDescending { it.modified }) }
-            .filter { team -> team.players.isNotEmpty() }
+        teams.map { team -> team.copy(players = team.players.sortedByDescending { it.modified }) }
     }
 }
 
