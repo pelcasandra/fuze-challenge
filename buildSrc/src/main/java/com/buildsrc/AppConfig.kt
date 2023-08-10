@@ -9,5 +9,5 @@ object AppConfig {
     const val proguardRules =  "proguard-rules.pro"
     const val applicationId = "com.fuze"
 
-    const val WEB_API_URL = "\"https://demo4717672.mockable.io/\""
+    const val WEB_API_URL = "\"https://api.pandascore.co/csgo/\""
 }

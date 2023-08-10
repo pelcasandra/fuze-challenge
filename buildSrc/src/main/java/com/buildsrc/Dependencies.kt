@@ -62,6 +62,7 @@ object Dependencies {
         add(coroutines)
         add(gson)
         add(gsonConverter)
+        add(hilt)
     }
 
     val androidTestLibraries = mutableListOf<String>().apply {

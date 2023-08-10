@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -19,7 +21,7 @@
             android:theme="@style/Theme.FuzeChallenge"
             tools:ignore="LockedOrientationActivity">
 
-            <nav-graph android:value="@navigation/nav_graph" />
+            <nav-graph android:value="@navigation/graph" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
