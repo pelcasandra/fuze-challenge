@@ -1,6 +1,6 @@
-package com.domain
+package com.domain.match
 
-import com.domain.models.Match
+import com.domain.match.models.Match
 import kotlinx.coroutines.flow.Flow
 
 interface MatchRepository {

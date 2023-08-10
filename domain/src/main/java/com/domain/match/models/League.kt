@@ -1,10 +1,12 @@
-package com.data.models
+package com.domain.match.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class OpponentsResponse(
-    @SerializedName("opponent") val opponentResponse: OpponentResponse
+data class League(
+    val id: Int,
+    val name: String,
+    val image: String
 ) : Parcelable

@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Color
 
 
 val blue161621 = Color(0xFF161621)
+val blue6C6B7E = Color(0xFF6C6B7E)
 val blue272639 = Color(0xFF272639)
 val black0D0D0D = Color(0xFF0D0D0D)
 val black282828 = Color(0xFF282828)
@@ -21,7 +22,7 @@ val LightThemeColors = FuzeColors(
     primary = blue161621,
     tertiary = whiteFFFFFF,
     background = blue161621,
-    backgroundMatchCard = blue272639,
+    backgroundComponent = blue272639,
     text = black282828,
     unSelectText = gray888888,
     border = grayE5E5E9,
@@ -32,7 +33,7 @@ val DarkThemeColors = FuzeColors(
     primary = blue161621,
     tertiary = black0D0D0D,
     background = black282828,
-    backgroundMatchCard = blue272639,
+    backgroundComponent = blue272639,
     text = whiteFFFFFF,
     unSelectText = gray888888,
     border = grayE5E5E9,
@@ -44,7 +45,7 @@ class FuzeColors(
     primary: Color,
     tertiary: Color,
     background: Color,
-    backgroundMatchCard: Color,
+    backgroundComponent: Color,
     text: Color,
     unSelectText: Color,
     border: Color,
@@ -56,7 +57,7 @@ class FuzeColors(
         private set
     var background = mutableStateOf(background).value
         private set
-    var backgroundMatchCard = mutableStateOf(backgroundMatchCard).value
+    var backgroundComponent = mutableStateOf(backgroundComponent).value
         private set
     var text = mutableStateOf(text).value
         private set
@@ -71,7 +72,7 @@ class FuzeColors(
         primary = primary,
         tertiary = tertiary,
         background = background,
-        backgroundMatchCard = backgroundMatchCard,
+        backgroundComponent = backgroundComponent,
         text = text,
         unSelectText = unSelectText,
         border = border,
@@ -82,7 +83,7 @@ class FuzeColors(
         primary = other.primary
         tertiary = other.tertiary
         background = other.background
-        backgroundMatchCard = other.backgroundMatchCard
+        backgroundComponent = other.backgroundComponent
         text = other.text
         unSelectText = other.unSelectText
         border = other.border
